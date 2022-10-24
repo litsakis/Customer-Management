@@ -1,5 +1,8 @@
 package com.litsakis.crm.entity;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,15 +25,20 @@ public class Tasks {
 	@Column(name="title")
 	private String title;
 	
-	@Column(name="taskdescr")
-	private String taskdescr;
+	@Column(name="taskdescription")
+	private String taskDescription;
+	
+	@Column(name="creationDate")
+	LocalDateTime  creationDate;
 	
 	public  Tasks () {}
 
 	public Tasks(int cusid, String title, String taskdescr) {
 		this.cusid = cusid;
 		this.title = title;
-		this.taskdescr = taskdescr;
+		this.taskDescription = taskdescr;
+		this.creationDate=LocalDateTime.now();
+
 	}
 
 	public int getId() {
@@ -58,11 +66,27 @@ public class Tasks {
 	}
 
 	public String getTaskdescr() {
-		return taskdescr;
+		return taskDescription;
 	}
 
 	public void setTaskdescr(String taskdescr) {
-		this.taskdescr = taskdescr;
+		this.taskDescription = taskdescr;
+	}
+
+	public String getTaskDescription() {
+		return taskDescription;
+	}
+
+	public void setTaskDescription(String taskDescription) {
+		this.taskDescription = taskDescription;
+	}
+
+	public LocalDateTime getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDateTime creationDate) {
+		this.creationDate = creationDate;
 	}
 	
 	
