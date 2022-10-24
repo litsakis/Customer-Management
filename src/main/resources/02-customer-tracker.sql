@@ -1,3 +1,5 @@
+UNLOCK TABLES;
+
 CREATE DATABASE  IF NOT EXISTS `customer_managment` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `customer_managment`;
 -- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
@@ -40,6 +42,7 @@ CREATE TABLE `task` (
   `customer_id` int(11) DEFAULT NULL,
   `title` varchar(205) DEFAULT NULL,
   `taskdescription` text DEFAULT NULL,
+  `creationdate` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
     KEY `FK_DETAIL_idx` (`customer_id`),
   CONSTRAINT `FK_DETAIL` FOREIGN KEY (`customer_id`) 
@@ -62,6 +65,12 @@ INSERT INTO `customer` VALUES
 	(5,'Maxwell','Dixon','max@luv2code.com');
 
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+LOCK TABLES `task` WRITE;
+
+INSERT INTO `task` VALUES 
+	(1,1,'task1','taskcomments', DEFAULT);
+/*!40000 ALTER TABLE `task` DISABLE KEYS */;
+
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

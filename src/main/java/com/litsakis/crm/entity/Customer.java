@@ -1,10 +1,15 @@
 package com.litsakis.crm.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="customer")
@@ -22,19 +27,22 @@ public class Customer {
 	private String lastName;
 	@Column(name="email")
 	private String email;
+	
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="customer",
+			cascade= {CascadeType.PERSIST , CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH})
+	private List<Task> tasks;
+	
 	//define constructors
 	public Customer() {}
-	
-	public Customer( String firstNAme, String lastName, String email) {
-	
+ 
+	public Customer(String firstNAme, String lastName, String email) {
 		this.firstNAme = firstNAme;
 		this.lastName = lastName;
 		this.email = email;
+		
 	}
 
-
-	
-	//define getters/setters
 	public int getId() {
 		return id;
 	}
@@ -66,12 +74,14 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	//define tostring
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstNAme=" + firstNAme + ", lastName=" + lastName + ", email=" + email + "]";
+	public List<Task> getTasks() {
+		return tasks;
 	}
- 
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
 
 }

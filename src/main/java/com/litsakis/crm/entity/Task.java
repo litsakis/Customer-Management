@@ -3,24 +3,30 @@ package com.litsakis.crm.entity;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tasks")
-public class Tasks {
+@Table(name="task")
+public class Task {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 
-	@Column(name="cusid")
-	private int cusid;
+	
+	@ManyToOne(cascade= {CascadeType.PERSIST , CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH})
+	@JoinColumn(name="customer_id")
+	private Customer customer;
 	
 	@Column(name="title")
 	private String title;
@@ -28,17 +34,16 @@ public class Tasks {
 	@Column(name="taskdescription")
 	private String taskDescription;
 	
-	@Column(name="creationDate")
+	@Column(name="creationdate")
 	LocalDateTime  creationDate;
 	
-	public  Tasks () {}
+	public  Task () {}
 
-	public Tasks(int cusid, String title, String taskdescr) {
-		this.cusid = cusid;
+	public Task(Customer customer, String title, String taskDescription, LocalDateTime creationDate) {
+		this.customer = customer;
 		this.title = title;
-		this.taskDescription = taskdescr;
-		this.creationDate=LocalDateTime.now();
-
+		this.taskDescription = taskDescription;
+		this.creationDate = creationDate;
 	}
 
 	public int getId() {
@@ -49,12 +54,12 @@ public class Tasks {
 		this.id = id;
 	}
 
-	public int getCusid() {
-		return cusid;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCusid(int cusid) {
-		this.cusid = cusid;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public String getTitle() {
@@ -63,14 +68,6 @@ public class Tasks {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getTaskdescr() {
-		return taskDescription;
-	}
-
-	public void setTaskdescr(String taskdescr) {
-		this.taskDescription = taskdescr;
 	}
 
 	public String getTaskDescription() {
@@ -88,8 +85,5 @@ public class Tasks {
 	public void setCreationDate(LocalDateTime creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
-	
+
 }
