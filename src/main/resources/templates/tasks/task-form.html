@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Task</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Task Directory</h3>
+	<hr>
+ 	<p class="h4 mp-4">Save Task</p>
+ 	<form action="#" th:action="@{/tasks/save}"
+ 					 th:object="${task}" method="post">
+ 		<input type="hidden" th:field="*{id}"  />			 
+ 		<input type="text" th:field="*{title}" class="form-control mb-4 col-4" placeholder="Task Title">
+ 		<input type="text" th:field="*{taskDescription}" class="form-control mb-4 col-4" placeholder="Description">
+ 		<input type="number" th:field="*{statusId}" class="form-control mb-4 col-4" placeholder="status">
+ 		<button type="submit" class="btn btn-info col-2">Save</button>
+ 	</form>
+	 <hr>
+	<a th:href="@{/tasks/list}">Back to Tasks List</a>
+</div>
+	
+</body>
+</html>
+
+
+

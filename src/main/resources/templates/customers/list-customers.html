@@ -47,10 +47,10 @@
 					<a th:href="@{/customers/delete (customerId=${tempCustomer.id})}" 
 					class="btn btn-danger btn-sm" 
 					onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
-					<a th:href="@{/customers/showFormForUpdate (customerId=${tempCustomer.id})}" 
+					<a th:href="@{/tasks/showFormForAdd/(customerId=${tempCustomer.id})}" 
 					class="btn btn-info btn-sm">New Task</a>
 					<a th:href="@{/customers/showFormForUpdate (customerId=${tempCustomer.id})}" 
-					class="btn btn-info btn-sm">Tasks</a>
+					class="btn btn-info btn-sm">Customer Tasks</a>
 				</td>
 			</tr>
 		</tbody>		

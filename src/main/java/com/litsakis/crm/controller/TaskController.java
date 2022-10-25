@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.litsakis.crm.entity.Customer;
 import com.litsakis.crm.entity.Task;
+import com.litsakis.crm.service.CustomerService;
 import com.litsakis.crm.service.TaskService;
  
 
@@ -20,10 +21,14 @@ import com.litsakis.crm.service.TaskService;
 public class TaskController {
 
 	private TaskService taskService;
-	
-	public TaskController(TaskService theTaskService) {
+	private	CustomerService customerService;
+
+	public TaskController(TaskService theTaskService,CustomerService theCustomerService) {
 		taskService = theTaskService;
+		customerService=theCustomerService;
+
 	}
+	 
 	
 	// add mapping for "/list"
 
@@ -40,8 +45,10 @@ public class TaskController {
 	}
 	
 	@GetMapping("/showFormForAdd")
-	public String showFormForAdd( Model theModel) {
+	public String showFormForAdd(@RequestParam("customerId") int theId, Model theModel) {
 		Task theTask = new Task();
+		
+		theTask.setCustomer(customerService.findById(theId));
 		theModel.addAttribute(theTask);
 		
 		
