@@ -37,14 +37,21 @@ public class Task {
 	@Column(name="creationdate")
 	LocalDateTime  creationDate;
 	
+	@Column(name="status")
+	private int statusId;
+
+	
 	public  Task () {}
 
-	public Task(Customer customer, String title, String taskDescription, LocalDateTime creationDate) {
+
+	public Task(Customer customer, String title, String taskDescription, LocalDateTime creationDate, int statusId) {
 		this.customer = customer;
 		this.title = title;
 		this.taskDescription = taskDescription;
 		this.creationDate = creationDate;
+		this.statusId = statusId;
 	}
+
 
 	public int getId() {
 		return id;
@@ -86,4 +93,14 @@ public class Task {
 		this.creationDate = creationDate;
 	}
 
+
+	public int getStatusId() {
+		return statusId;
+	}
+
+
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+	
 }

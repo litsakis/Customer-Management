@@ -42,7 +42,8 @@ CREATE TABLE `task` (
   `customer_id` int(11) DEFAULT NULL,
   `title` varchar(205) DEFAULT NULL,
   `taskdescription` text DEFAULT NULL,
-  `creationdate` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `creationdate` timestamp DEFAULT CURRENT_TIMESTAMP, 
+  `status` int(5) DEFAULT 1,
   PRIMARY KEY (`id`),
     KEY `FK_DETAIL_idx` (`customer_id`),
   CONSTRAINT `FK_DETAIL` FOREIGN KEY (`customer_id`) 
@@ -58,17 +59,14 @@ LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 
 INSERT INTO `customer` VALUES 
-	(1,'David','Adams','david@luv2code.com'),
-	(2,'John','Doe','john@luv2code.com'),
-	(3,'Ajay','Rao','ajay@luv2code.com'),
-	(4,'Mary','Public','mary@luv2code.com'),
-	(5,'Maxwell','Dixon','max@luv2code.com');
+	(1,'Alex','Litsakis','litsakis@outlook.com');
+
 
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 LOCK TABLES `task` WRITE;
 
 INSERT INTO `task` VALUES 
-	(1,1,'task1','taskcomments', DEFAULT);
+	(1,1,'task1','taskcomments', DEFAULT,1);
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
 
 UNLOCK TABLES;
