@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.litsakis.crm.entity.Task;
 
 @RepositoryRestResource (path="api-tasks")
-public interface TaskRepository extends JpaRepository<Task, Integer> {
+public interface TaskRestRepository extends JpaRepository<Task, Integer> {
 
 }
 /*
