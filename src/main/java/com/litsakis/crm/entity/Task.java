@@ -1,6 +1,6 @@
 package com.litsakis.crm.entity;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="task")
 public class Task {
@@ -22,6 +24,7 @@ public class Task {
 	@Column(name="id")
 	private int id;
 
+	 
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST , CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.REFRESH})
@@ -34,8 +37,9 @@ public class Task {
 	@Column(name="taskdescription")
 	private String taskDescription;
 	
+    @CreationTimestamp
 	@Column(name="creationdate")
-	LocalDateTime  creationDate;
+	private Instant  creationDate;
 	
 	@Column(name="status")
 	private int statusId;
@@ -44,7 +48,7 @@ public class Task {
 	public  Task () {}
 
 
-	public Task(Customer customer, String title, String taskDescription, LocalDateTime creationDate, int statusId) {
+	public Task(Customer customer, String title, String taskDescription, Instant creationDate, int statusId) {
 		this.customer = customer;
 		this.title = title;
 		this.taskDescription = taskDescription;
@@ -89,11 +93,11 @@ public class Task {
 		this.taskDescription = taskDescription;
 	}
 
-	public LocalDateTime getCreationDate() {
+	public Instant getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDateTime creationDate) {
+	public void setCreationDate(Instant creationDate) {
 		this.creationDate = creationDate;
 	}
 
@@ -106,7 +110,6 @@ public class Task {
 	public void setStatusId(int statusId) {
 		this.statusId = statusId;
 	}
-	
 	 
 	 
 	
