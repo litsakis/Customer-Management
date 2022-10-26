@@ -27,7 +27,7 @@ public class CustomerController {
 	// add mapping for "/list"
 
 	@GetMapping("/list")
-	public String listEmployees(Model theModel) {
+	public String listCustomers(Model theModel) {
 		
 		// get employees from db
 		List<Customer> theCustomers = customerService.findAll();

@@ -27,6 +27,7 @@
 			<tr>
 				<th>Task Id</th>
 				<th>Creation Date</th>
+				<th>Customer name</th>
 				<th>Title</th>
 				<th>Action</th>
 				
@@ -34,11 +35,12 @@
 		</thead>
 		
 		<tbody>
-			<tr th:each="tempTask : ${tasks}">
+			<th:block th:each="tempTask : ${tasks}">
+			<tr >
 			 
 				<td th:text="${tempTask.id}" />	
-				<td th:text="${tempTask.creationDate}" />				
-			
+				<td th:text="${tempTask.creationDate}" />
+				<td>[[${tempTask.customer.lastName}]] [[${tempTask.customer.firstName}]]</td>
 				<td th:text="${tempTask.title}" />	
 				<td> 
 					<a th:href="@{/tasks/showFormForUpdate (taskId=${tempTask.id})}" 
@@ -49,6 +51,7 @@
 					
 				</td>
 			</tr>
+			</th:block>
 		</tbody>		
 	</table>
 	

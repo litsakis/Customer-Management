@@ -13,6 +13,7 @@ import com.litsakis.crm.entity.Task;
 public class TaskServiceImpl implements TaskService {
 	
 	private TaskRepository taskRepository;
+
 	
 	@Autowired
 	public TaskServiceImpl(TaskRepository theTaskRepository) {
@@ -22,6 +23,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public List<Task> findAll() {
 		return taskRepository.findAllByOrderByIdAsc();
+		
 	}
 
 	@Override
@@ -50,7 +52,5 @@ public class TaskServiceImpl implements TaskService {
 	public void deleteById(int theId) {
 		taskRepository.deleteById(theId);
 	}
-	
-	
-	
+	 
 }

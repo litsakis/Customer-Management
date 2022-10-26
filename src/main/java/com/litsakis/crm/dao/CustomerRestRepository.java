@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.litsakis.crm.entity.Customer;
 
-@RepositoryRestResource (path="api-customers")
+@RepositoryRestResource (path="customers")
 public interface CustomerRestRepository extends JpaRepository<Customer, Integer> {
 
 }

@@ -64,6 +64,10 @@ public class Task {
 	public Customer getCustomer() {
 		return customer;
 	}
+	
+	/*public String getCustomerName() {
+		return customer.getLastName()+" "+customer.getFirstName();
+	}*/
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
@@ -102,5 +106,8 @@ public class Task {
 	public void setStatusId(int statusId) {
 		this.statusId = statusId;
 	}
+	
+	 
+	 
 	
 }

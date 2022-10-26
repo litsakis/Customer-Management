@@ -21,7 +21,11 @@
  	<p class="h4 mp-4">Save Task</p>
  	<form action="#" th:action="@{/tasks/save}"
  					 th:object="${task}" method="post">
- 		<input type="hidden" th:field="*{id}"  />			 
+ 		<input type="hidden" th:field="*{id}"  />	
+  		<input type="hidden" th:field="*{customer}"  />	
+  		<input type="hidden" th:field="*{creationDate}"  />			 
+  				 
+ 				 
  		<input type="text" th:field="*{title}" class="form-control mb-4 col-4" placeholder="Task Title">
  		<input type="text" th:field="*{taskDescription}" class="form-control mb-4 col-4" placeholder="Description">
  		<input type="number" th:field="*{statusId}" class="form-control mb-4 col-4" placeholder="status">

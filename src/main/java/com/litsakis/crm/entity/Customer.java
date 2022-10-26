@@ -31,6 +31,9 @@ public class Customer {
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="customer",
 			cascade= {CascadeType.PERSIST , CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.REFRESH})
+	/*@OneToMany(
+			cascade= {CascadeType.PERSIST , CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH})*/
 	private List<Task> tasks;
 	
 	//define constructors
@@ -81,6 +84,11 @@ public class Customer {
 
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 	
 

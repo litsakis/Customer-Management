@@ -35,20 +35,24 @@ public class TaskController {
 	@GetMapping("/list")
 	public String listTasks(Model theModel) {
 		
-		// get employees from db
+		// get task from db
 		List<Task> theTasks = taskService.findAll();
 		
 		// add to the spring model
 		theModel.addAttribute("tasks", theTasks);
 		
-		return "tasks/list-tasks";
+		return "tasks/list-tasks2";
 	}
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(@RequestParam("customerId") int theId, Model theModel) {
 		Task theTask = new Task();
 		
-		theTask.setCustomer(customerService.findById(theId));
+		System.out.println("Saving task of customer with id: "+theId);
+		Customer tempcustomer =customerService.findById(theId);
+		
+		System.out.println(tempcustomer);
+		theTask.setCustomer(tempcustomer);
 		theModel.addAttribute(theTask);
 		
 		
