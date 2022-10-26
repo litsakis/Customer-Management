@@ -39,7 +39,8 @@
 			<tr >
 			 
 				<td th:text="${tempTask.id}" />	
-				<td th:text="${tempTask.creationDate}" />
+				
+				<td th:text="${#dates.format(tempTask.creationDate, 'dd-MM-yyyy HH:mm')}" />
 				<td>[[${tempTask.customer.lastName}]] [[${tempTask.customer.firstName}]]</td>
 				<td th:text="${tempTask.title}" />	
 				<td> 
